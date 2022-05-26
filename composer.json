@@ -1,0 +1,14 @@
+{
+    "name": "ericl/control",
+    "description": "\"Sistema de Controle de Estoque\"",
+    "require": {
+        "vlucas/phpdotenv": "^4.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ericles Willian",
+            "email": "83819706+ewnsilva@users.noreply.github.com"
+        }
+    ]
+}
