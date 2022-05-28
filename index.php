@@ -20,8 +20,8 @@ $appName = $_ENV['APP_NAME'];
 <body>
     
     <h1>Sistema de Controle de Estoque</h1>
-    s
-    <form action="src/database/login.php" method="POST">
+    
+    <form action="/src/app/enter.php" method="POST">
         <input name="email" placeholder="E-mail"></input><br>
         <input name="senha" type="password" placeholder="Senha"></input><br>
         <button type="submit" >Entrar</button>
