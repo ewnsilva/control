@@ -3,7 +3,7 @@
 require_once __DIR__ . "/../../configurations/connection.php";
 
 function login($conn, $email, $senha) {
-    $mysqli = "SELECT * FROM register WHERE email = '$email' AND senha = MD5('$senha')";
+    $mysqli = "SELECT * FROM register WHERE email = '$email' LIMIT 1";
 
     $result = $mysqli->query($query);
 
