@@ -2,20 +2,17 @@
 
 require_once __DIR__ . "/../../configurations/connection.php";
 
-function login($conn, $enter) {
-    
-    $query = "SELECT id FROM register WHERE email = {$email}' AND senha = MD5('{$senha}')";
+function login($conn, $email, $senha) {
+    $mysqli = "SELECT * FROM register WHERE email = '$email' AND senha = MD5('$senha')";
 
-    $result = mysqli_query($conn, $query);
+    $result = $mysqli->query($query);
 
-    $row = mysqli_num_row($result);
+    $row = $result->num_rows;
 
     if($row == 1) {
-    $_SESSION['email'] = $email;
-    header('Location: painel.php');
+        $_SESSION['email'] = $email;
+        header('Location: http://localhost/painel.php');
     } else {
-
+        header('Location: http://localhost/index.php');
     }
-
 }
-
