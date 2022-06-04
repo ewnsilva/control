@@ -2,17 +2,10 @@
 
 require_once __DIR__ . "/../../configurations/connection.php";
 
-function login($conn, $email, $senha) {
-    $mysqli = "SELECT * FROM register WHERE email = '$email' LIMIT 1";
+function login($conn) {
+    $sql_code = "SELECT * FROM register WHERE email = '$email' AND senha = '$senha'";
 
-    $result = $mysqli->query($query);
+    $sql_query = $mysqli->query($sql_code) or die ("Falha ao conectar com o banco de dados." . $mysqli->error);
 
-    $row = $result->num_rows;
-
-    if($row == 1) {
-        $_SESSION['email'] = $email;
-        header('Location: http://localhost/painel.php');
-    } else {
-        header('Location: http://localhost/index.php');
-    }
+    $result = $sql_query->num_rows;
 }

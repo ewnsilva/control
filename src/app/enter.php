@@ -1,26 +1,19 @@
 <?php
 
 require_once __DIR__ . "/../../configurations/bootstrap.php";
-require_once __DIR__ . "/src/database/login.php";
+require_once __DIR__ . "/../database/login.php";
 
-if(empty(filter_input('email')) || empty(filter_input('senha'))) {
-    header('Location: http://localhost/index.php');
-}
-    
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+   
+if(isset($email) || isset($senha)){
 
-if(filter_input('email')){
-
-    return login(getConnection(),$email, $senha);
-/*     $mysqli = "SELECT * FROM register WHERE email = '$email' LIMIT 1";
-    $result = $mysqli->query($mysqli) or die ($mysqli->error);
-
-    $user = $result->fetch_assoc();
-    if(password_verify($senha, $user['senha'])) */
+    return login(getConnection());
     
-
-if(login(getConnection(),$email, $senha)){
-    header('Location: http://localhost/painel.php');
+    if($result == 1){
+        $user = $sql_query->fetch_assoc();
+        header('Location: http://localhost/painel.php');
+    } else {
+        echo "Falha ao entrar no sistema.";
 }
 }
