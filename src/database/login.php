@@ -2,12 +2,12 @@
 
 require_once __DIR__ . "/../../configurations/connection.php";
 
-function login($conn) {
-    $sql_code = "SELECT * FROM register WHERE email = '$email' AND senha = '$senha'";
+function login($conn, $email, $senha) {
+    $query = "SELECT * FROM register WHERE email = '$email' AND senha = '$senha'";
 
-    $sql_query = $conn->query($sql_code) or die ("Falha ao conectar com o banco de dados." . $conn->error);
+    $statement = $conn->query($query) or die ("Falha ao conectar com o banco de dados." . $conn->error);
 
-    $result = $sql_query->num_rows;
+    $result = $statement->num_rows;
 
     return $result;
 }
